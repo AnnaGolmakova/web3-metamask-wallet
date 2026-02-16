@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ethers, type Eip1193Provider } from "ethers";
-import { BalanceCard } from "./components/BalanceCard";
+import { WalletInfo } from "./components/WalletInfo";
 import "./App.css";
 
 // Extend the Eip1193Provider interface to include event methods
@@ -246,43 +246,12 @@ function App() {
               )}
             </div>
           ) : (
-            <div className="wallet-section">
-              <div className="wallet-info">
-                <div className="address-card">
-                  <label className="label">Connected Address</label>
-                  <div className="address">
-                    {wallet.address.slice(0, 6)}...{wallet.address.slice(-4)}
-                  </div>
-                </div>
-
-                <div className="balances">
-                  <BalanceCard
-                    label="Ethereum Balance"
-                    balance={wallet.ethBalance}
-                    unit="ETH"
-                    decimals={6}
-                    tokenIcon="ETH"
-                    iconClassName="eth-icon"
-                  />
-
-                  <BalanceCard
-                    label="USDT Balance"
-                    balance={wallet.usdtBalance}
-                    unit="USDT"
-                    decimals={2}
-                    tokenIcon="USDT"
-                    iconClassName="usdt-icon"
-                  />
-                </div>
-
-                <button
-                  className="disconnect-button"
-                  onClick={disconnectWallet}
-                >
-                  Disconnect Wallet
-                </button>
-              </div>
-            </div>
+            <WalletInfo
+              address={wallet.address}
+              ethBalance={wallet.ethBalance}
+              usdtBalance={wallet.usdtBalance}
+              onDisconnect={disconnectWallet}
+            />
           )}
 
           {wallet.error && (

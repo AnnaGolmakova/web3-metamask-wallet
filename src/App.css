@@ -139,83 +139,6 @@ body {
     text-decoration: underline;
 }
 
-/* Wallet Section */
-.wallet-section {
-    animation: slideIn 0.5s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.wallet-info {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.address-card {
-    background: var(--color-bg-card);
-    padding: 20px;
-    border-radius: 12px;
-    border: 2px solid var(--color-gray-300);
-}
-
-.label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-gray-700);
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.address {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-gray-900);
-    font-family: "Courier New", monospace;
-    word-break: break-all;
-}
-
-/* Balances */
-.balances {
-    display: grid;
-    gap: 16px;
-}
-
-.disconnect-button {
-    width: 100%;
-    background: var(--color-bg-primary);
-    color: var(--color-error);
-    border: 2px solid var(--color-error);
-    padding: 14px 32px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.disconnect-button:hover {
-    background: var(--color-error);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-error);
-}
-
-.disconnect-button:active {
-    transform: translateY(0);
-}
-
 /* Error Message */
 .error-message {
     margin-top: 24px;
@@ -284,10 +207,6 @@ body {
     .connect-button {
         width: 100%;
         padding: 14px 32px;
-    }
-
-    .address {
-        font-size: 1rem;
     }
 }
 
