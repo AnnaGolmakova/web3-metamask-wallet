@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { ethers, type Eip1193Provider } from "ethers";
 import { WalletInfo } from "./components/WalletInfo";
+import { ErrorMessage } from "./components/ErrorMessage";
 import "./App.css";
 import WalletIcon from "./assets/wallet-icon.svg";
-import ErrorIcon from "./assets/error-icon.svg";
 
 // Extend the Eip1193Provider interface to include event methods
 interface MetaMaskProvider extends Eip1193Provider {
@@ -227,12 +227,7 @@ function App() {
             />
           )}
 
-          {wallet.error && (
-            <div className="error-message">
-              <img src={ErrorIcon} alt="Error" />
-              <span>{wallet.error}</span>
-            </div>
-          )}
+          {wallet.error && <ErrorMessage message={wallet.error} />}
         </main>
 
         <footer className="footer">

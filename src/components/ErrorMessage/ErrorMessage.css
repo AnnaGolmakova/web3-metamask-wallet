@@ -1,0 +1,33 @@
+.error-message {
+    margin-top: 24px;
+    padding: 16px;
+    background: var(--color-error-bg);
+    border: 2px solid var(--color-error-light);
+    border-radius: 12px;
+    color: var(--color-error-dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+.error-message img {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
