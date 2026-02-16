@@ -1,3 +1,59 @@
+:root {
+    /* Primary Colors */
+    --color-primary: #667eea;
+    --color-primary-dark: #764ba2;
+    --color-primary-light: rgba(102, 126, 234, 0.4);
+
+    /* Gray Scale */
+    --color-gray-900: #1a202c;
+    --color-gray-700: #4a5568;
+    --color-gray-600: #718096;
+    --color-gray-400: #a0aec0;
+    --color-gray-300: #e2e8f0;
+    --color-gray-100: #edf2f7;
+    --color-gray-50: #f7fafc;
+
+    /* Success/Green Colors */
+    --color-success-dark: #059669;
+    --color-success: #16a34a;
+    --color-success-light: #f0fdf4;
+    --color-success-lighter: #ecfdf5;
+
+    /* Error/Red Colors */
+    --color-error: #e53e3e;
+    --color-error-dark: #c53030;
+    --color-error-light: #fc8181;
+    --color-error-bg: #fff5f5;
+
+    /* Gradient Colors */
+    --color-gradient-title: linear-gradient(
+        45deg,
+        #0d0f29,
+        #242852,
+        #3a406b,
+        #646a9c,
+        #b0b3d9
+    );
+
+    /* Background Colors */
+    --color-bg-primary: white;
+    --color-bg-gradient: linear-gradient(
+        45deg,
+        #f0f8ff,
+        #f5fffa,
+        #e0ffff,
+        #add8e6
+    );
+    --color-bg-card: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+
+    /* Shadow Colors */
+    --shadow-primary: 0 4px 15px rgba(102, 126, 234, 0.4);
+    --shadow-primary-hover: 0 6px 20px rgba(102, 126, 234, 0.6);
+    --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.3);
+    --shadow-card-hover: 0 4px 12px rgba(102, 126, 234, 0.15);
+    --shadow-error: 0 4px 12px rgba(229, 62, 62, 0.3);
+}
+
 body {
     margin: 0;
     padding: 0;

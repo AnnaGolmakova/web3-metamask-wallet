@@ -15,7 +15,7 @@ body {
 
 .app {
     min-height: 100vh;
-    background: linear-gradient(45deg, #f0f8ff, #f5fffa, #e0ffff, #add8e6);
+    background: var(--color-bg-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,9 +25,9 @@ body {
 .container {
     width: 100%;
     max-width: 600px;
-    background: white;
+    background: var(--color-bg-primary);
     border-radius: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-card);
     padding: 40px;
     animation: fadeIn 0.5s ease-in;
 }
@@ -51,16 +51,9 @@ body {
 .title {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1a202c;
+    color: var(--color-gray-900);
     margin-bottom: 12px;
-    background: linear-gradient(
-        45deg,
-        #0d0f29,
-        #242852,
-        #3a406b,
-        #646a9c,
-        #b0b3d9
-    );
+    background: var(--color-gradient-title);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -68,7 +61,7 @@ body {
 
 .subtitle {
     font-size: 1rem;
-    color: #718096;
+    color: var(--color-gray-600);
     line-height: 1.5;
 }
 
@@ -110,12 +103,12 @@ body {
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: var(--shadow-primary);
 }
 
 .connect-button:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    box-shadow: var(--shadow-primary-hover);
 }
 
 .connect-button:active:not(:disabled) {
@@ -130,11 +123,11 @@ body {
 .info-text {
     margin-top: 24px;
     font-size: 0.875rem;
-    color: #718096;
+    color: var(--color-gray-600);
 }
 
 .link {
-    color: #667eea;
+    color: var(--color-primary);
     text-decoration: none;
     font-weight: 600;
     margin-left: 8px;
@@ -142,7 +135,7 @@ body {
 }
 
 .link:hover {
-    color: #764ba2;
+    color: var(--color-primary-dark);
     text-decoration: underline;
 }
 
@@ -169,17 +162,17 @@ body {
 }
 
 .address-card {
-    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    background: var(--color-bg-card);
     padding: 20px;
     border-radius: 12px;
-    border: 2px solid #e2e8f0;
+    border: 2px solid var(--color-gray-300);
 }
 
 .label {
     display: block;
     font-size: 0.875rem;
     font-weight: 600;
-    color: #4a5568;
+    color: var(--color-gray-700);
     margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -188,7 +181,7 @@ body {
 .address {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #1a202c;
+    color: var(--color-gray-900);
     font-family: "Courier New", monospace;
     word-break: break-all;
 }
@@ -201,9 +194,9 @@ body {
 
 .disconnect-button {
     width: 100%;
-    background: white;
-    color: #e53e3e;
-    border: 2px solid #e53e3e;
+    background: var(--color-bg-primary);
+    color: var(--color-error);
+    border: 2px solid var(--color-error);
     padding: 14px 32px;
     font-size: 1rem;
     font-weight: 600;
@@ -213,10 +206,10 @@ body {
 }
 
 .disconnect-button:hover {
-    background: #e53e3e;
+    background: var(--color-error);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+    box-shadow: var(--shadow-error);
 }
 
 .disconnect-button:active {
@@ -227,10 +220,10 @@ body {
 .error-message {
     margin-top: 24px;
     padding: 16px;
-    background: #fff5f5;
-    border: 2px solid #fc8181;
+    background: var(--color-error-bg);
+    border: 2px solid var(--color-error-light);
     border-radius: 12px;
-    color: #c53030;
+    color: var(--color-error-dark);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -260,18 +253,18 @@ body {
 .footer {
     text-align: center;
     padding-top: 24px;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--color-gray-300);
 }
 
 .footer p {
     font-size: 0.875rem;
-    color: #a0aec0;
+    color: var(--color-gray-400);
     margin-bottom: 4px;
 }
 
 .network-info {
     font-weight: 600;
-    color: #667eea;
+    color: var(--color-primary);
 }
 
 /* Responsive Design */
