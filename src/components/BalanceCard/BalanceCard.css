@@ -60,7 +60,6 @@
     color: var(--color-gray-600);
 }
 
-/* Responsive Design */
 @media (max-width: 640px) {
     .balance-amount {
         font-size: 1.5rem;
