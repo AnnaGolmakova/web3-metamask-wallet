@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { ethers, type Eip1193Provider } from "ethers";
 import { WalletInfo } from "./components/WalletInfo";
 import "./App.css";
+import WalletIcon from "./assets/wallet-icon.svg";
+import ErrorIcon from "./assets/error-icon.svg";
 
 // Extend the Eip1193Provider interface to include event methods
 interface MetaMaskProvider extends Eip1193Provider {
@@ -193,36 +195,7 @@ function App() {
           {!wallet.address ? (
             <div className="connect-section">
               <div className="wallet-icon">
-                <svg
-                  width="80"
-                  height="80"
-                  viewBox="0 0 80 80"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M60 30H20C17.2386 30 15 32.2386 15 35V60C15 62.7614 17.2386 65 20 65H60C62.7614 65 65 62.7614 65 60V35C65 32.2386 62.7614 30 60 30Z"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M15 40H65"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M20 30V25C20 22.3478 21.0536 19.8043 22.9289 17.9289C24.8043 16.0536 27.3478 15 30 15H50C52.6522 15 55.1957 16.0536 57.0711 17.9289C58.9464 19.8043 60 22.3478 60 25V30"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <circle cx="52" cy="52" r="3" fill="currentColor" />
-                </svg>
+                <img src={WalletIcon} alt="Wallet" />
               </div>
               <button
                 className="connect-button"
@@ -256,35 +229,7 @@ function App() {
 
           {wallet.error && (
             <div className="error-message">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M10 6V10"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M10 14H10.01"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <img src={ErrorIcon} alt="Error" />
               <span>{wallet.error}</span>
             </div>
           )}
