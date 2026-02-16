@@ -1,4 +1,5 @@
-import { formatBalance } from "../utils/formatBalance";
+import { formatBalance } from "../../utils/formatBalance";
+import "./BalanceCard.css";
 
 interface BalanceCardProps {
   label: string;

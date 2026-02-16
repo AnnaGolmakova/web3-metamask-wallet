@@ -199,68 +199,6 @@ body {
     gap: 16px;
 }
 
-.balance-card {
-    background: white;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 24px;
-    transition: all 0.3s ease;
-}
-
-.balance-card:hover {
-    border-color: #667eea;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
-    transform: translateY(-2px);
-}
-
-.balance-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.balance-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #718096;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.token-icon {
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-}
-
-.eth-icon {
-    background: #ecfdf5;
-    color: #059669;
-}
-
-.usdt-icon {
-    background: #f0fdf4;
-    color: #16a34a;
-}
-
-.balance-amount {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1a202c;
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-}
-
-.balance-unit {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #718096;
-}
-
 .disconnect-button {
     width: 100%;
     background: white;
@@ -355,10 +293,6 @@ body {
         padding: 14px 32px;
     }
 
-    .balance-amount {
-        font-size: 1.5rem;
-    }
-
     .address {
         font-size: 1rem;
     }
@@ -371,9 +305,5 @@ body {
 
     .title {
         font-size: 1.75rem;
-    }
-
-    .balance-card {
-        padding: 16px;
     }
 }
