@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { ethers, type Eip1193Provider } from "ethers";
+import { BalanceCard } from "./components/BalanceCard";
 import "./App.css";
 
 // Extend the Eip1193Provider interface to include event methods
@@ -255,31 +256,23 @@ function App() {
                 </div>
 
                 <div className="balances">
-                  <div className="balance-card">
-                    <div className="balance-header">
-                      <span className="balance-label">Ethereum Balance</span>
-                      <div className="token-icon eth-icon">ETH</div>
-                    </div>
-                    <div className="balance-amount">
-                      {wallet.ethBalance
-                        ? parseFloat(wallet.ethBalance).toFixed(6)
-                        : "0.000000"}
-                      <span className="balance-unit">ETH</span>
-                    </div>
-                  </div>
+                  <BalanceCard
+                    label="Ethereum Balance"
+                    balance={wallet.ethBalance}
+                    unit="ETH"
+                    decimals={6}
+                    tokenIcon="ETH"
+                    iconClassName="eth-icon"
+                  />
 
-                  <div className="balance-card">
-                    <div className="balance-header">
-                      <span className="balance-label">USDT Balance</span>
-                      <div className="token-icon usdt-icon">USDT</div>
-                    </div>
-                    <div className="balance-amount">
-                      {wallet.usdtBalance
-                        ? parseFloat(wallet.usdtBalance).toFixed(2)
-                        : "0.00"}
-                      <span className="balance-unit">USDT</span>
-                    </div>
-                  </div>
+                  <BalanceCard
+                    label="USDT Balance"
+                    balance={wallet.usdtBalance}
+                    unit="USDT"
+                    decimals={2}
+                    tokenIcon="USDT"
+                    iconClassName="usdt-icon"
+                  />
                 </div>
 
                 <button
