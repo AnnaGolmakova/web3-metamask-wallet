@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import { ethers, type Eip1193Provider } from "ethers";
 import { WalletInfo } from "./components/WalletInfo";
 import { ErrorMessage } from "./components/ErrorMessage";
+import { ConnectWallet } from "./components/ConnectWallet";
 import "./App.css";
-import WalletIcon from "./assets/wallet-icon.svg";
 
 // Extend the Eip1193Provider interface to include event methods
 interface MetaMaskProvider extends Eip1193Provider {
@@ -26,7 +26,6 @@ interface WalletState {
   address: string | null;
   ethBalance: string | null;
   usdtBalance: string | null;
-  isConnecting: boolean;
   error: string | null;
 }
 
@@ -35,14 +34,8 @@ function App() {
     address: null,
     ethBalance: null,
     usdtBalance: null,
-    isConnecting: false,
     error: null,
   });
-
-  // Check if MetaMask is installed
-  const isMetaMaskInstalled = () => {
-    return typeof window.ethereum !== "undefined";
-  };
 
   // Get ethereum provider with type safety
   const getEthereumProvider = (): MetaMaskProvider | null => {
@@ -87,60 +80,24 @@ function App() {
     }
   }, []);
 
-  // Connect wallet
-  const connectWallet = async () => {
-    if (!isMetaMaskInstalled()) {
-      setWallet((prev) => ({
-        ...prev,
-        error:
-          "MetaMask is not installed. Please install MetaMask to continue.",
-      }));
-      return;
-    }
+  // Handle wallet connection
+  const handleConnect = async (address: string) => {
+    setWallet((prev) => ({
+      ...prev,
+      address,
+      error: null,
+    }));
 
-    setWallet((prev) => ({ ...prev, isConnecting: true, error: null }));
+    // Fetch balances
+    await fetchBalances(address);
+  };
 
-    try {
-      const ethereum = getEthereumProvider();
-      if (!ethereum) return;
-
-      const provider = new ethers.BrowserProvider(ethereum);
-
-      // Request account access
-      const accounts = await provider.send("eth_requestAccounts", []);
-      const address = accounts[0];
-
-      // Check if we're on Ethereum Mainnet (chainId: 1)
-      const network = await provider.getNetwork();
-      if (network.chainId !== 1n) {
-        setWallet((prev) => ({
-          ...prev,
-          isConnecting: false,
-          error: "Please switch to Ethereum Mainnet in MetaMask.",
-        }));
-        return;
-      }
-
-      setWallet((prev) => ({
-        ...prev,
-        address,
-        isConnecting: false,
-      }));
-
-      // Fetch balances
-      await fetchBalances(address);
-    } catch (error) {
-      console.error("Error connecting wallet:", error);
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : "Failed to connect wallet. Please try again.";
-      setWallet((prev) => ({
-        ...prev,
-        isConnecting: false,
-        error: errorMessage,
-      }));
-    }
+  // Handle connection errors
+  const handleError = (error: string) => {
+    setWallet((prev) => ({
+      ...prev,
+      error,
+    }));
   };
 
   // Disconnect wallet
@@ -149,7 +106,6 @@ function App() {
       address: null,
       ethBalance: null,
       usdtBalance: null,
-      isConnecting: false,
       error: null,
     });
   };
@@ -193,31 +149,7 @@ function App() {
 
         <main className="main">
           {!wallet.address ? (
-            <div className="connect-section">
-              <div className="wallet-icon">
-                <img src={WalletIcon} alt="Wallet" />
-              </div>
-              <button
-                className="connect-button"
-                onClick={connectWallet}
-                disabled={wallet.isConnecting}
-              >
-                {wallet.isConnecting ? "Connecting..." : "Connect Wallet"}
-              </button>
-              {!isMetaMaskInstalled() && (
-                <p className="info-text">
-                  Don't have MetaMask?
-                  <a
-                    href="https://metamask.io/download/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link"
-                  >
-                    Install it here
-                  </a>
-                </p>
-              )}
-            </div>
+            <ConnectWallet onConnect={handleConnect} onError={handleError} />
           ) : (
             <WalletInfo
               address={wallet.address}
